@@ -2,7 +2,9 @@ package br.com.fiap.produtos.repository;
 
 import br.com.fiap.produtos.model.Categoria;
 
+import javax.swing.*;
 import java.util.List;
+import java.util.Vector;
 
 public class CategoriaCollectionRepository {
 
@@ -10,11 +12,11 @@ public class CategoriaCollectionRepository {
 
     static{
 
-        categorias = new vector<>();
+        categorias = new Vector<>();
 
-        Categoria eletronicos = new categoria("Eletronicos");
-        Categoria celulares = new categoria ("celulares");
-        Categoria livros = new categoria ("livros");
+        Categoria eletronicos = new Categoria("Eletronicos");
+        Categoria celulares = new Categoria ("celulares");
+        Categoria livros = new Categoria ("livros");
 
         categorias.add(eletronicos);
         categorias.add(celulares);
@@ -32,7 +34,18 @@ public class CategoriaCollectionRepository {
 
     public static List<Categoria> findByNome(String nome){
 
-        return categoria.stream().filter(c->c.getNome().equalsIgnoreCase(nome)).toList();
+        return categorias.stream().filter(c->c.getNome().equalsIgnoreCase(nome)).toList();
 
+    }
+
+    public static Categoria save(Categoria categoria) {
+        if(!categorias.contains(categoria)) {
+            categoria.setId((long)categorias.size() +1);
+            categorias.add(categoria);
+            return categoria;
+        }else{
+            JOptionPane.showMessageDialog(null, "Já existe uma categoria com o nome informado");
+            return null;
+        }
     }
 }
