@@ -3,6 +3,7 @@ package br.com.fiap.produtos;
 import br.com.fiap.produtos.model.Categoria;
 import br.com.fiap.produtos.model.Produto;
 import br.com.fiap.produtos.repository.CategoriaCollectionRepository;
+import br.com.fiap.produtos.repository.ProdutoCollectionRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,13 +11,16 @@ import java.time.LocalDateTime;
 public class Main {
     public static void main(String[] args) {
 
-        Categoria categoria = new Categoria();
+        Produto produto = new Produto();
+        produto .setNome("Kindle")
+                .setDescricao("e-reader")
+                .setCategoria(CategoriaCollectionRepository.findByNome("Eletronicos").get(0))
+                .setDataDeCadastro(LocalDateTime.now())
+                .setPreco(BigDecimal.valueOf(800));
 
-        categoria.setNome("Informatica");
+        Produto produto1 = ProdutoCollectionRepository.save(produto);
 
-        Categoria categoriaSalva = CategoriaCollectionRepository.save(categoria);
-
-        System.out.println("Categoria: " + categoriaSalva);
+        System.out.println("ID: "+ produto1.getId() + "Nome do produto: " + produto1.getNome());
 
     }
 }

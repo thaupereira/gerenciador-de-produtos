@@ -14,9 +14,9 @@ public class CategoriaCollectionRepository {
 
         categorias = new Vector<>();
 
-        Categoria eletronicos = new Categoria("Eletronicos");
-        Categoria celulares = new Categoria ("celulares");
-        Categoria livros = new Categoria ("livros");
+        Categoria eletronicos = new Categoria(1l, "Eletronicos");
+        Categoria celulares = new Categoria (2l, "celulares");
+        Categoria livros = new Categoria (3l, "livros");
 
         categorias.add(eletronicos);
         categorias.add(celulares);
