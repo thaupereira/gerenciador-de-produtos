@@ -1,5 +1,6 @@
 package br.com.fiap.produtos.repository;
 
+import br.com.fiap.produtos.model.Categoria;
 import br.com.fiap.produtos.model.Produto;
 
 import javax.swing.*;
@@ -42,5 +43,9 @@ public class ProdutoCollectionRepository {
 
         return null;
         }
+    }
+
+    public static List<Produto> findByCategoria(Categoria categoria) {
+        return produtos.stream().filter(p->p.getCategoria().equals(categoria)).toList();
     }
 }

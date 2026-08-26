@@ -1,6 +1,7 @@
 package br.com.fiap.produtos.repository;
 
 import br.com.fiap.produtos.model.Categoria;
+import br.com.fiap.produtos.model.Produto;
 
 import javax.swing.*;
 import java.util.List;

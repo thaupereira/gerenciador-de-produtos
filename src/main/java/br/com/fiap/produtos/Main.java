@@ -9,6 +9,9 @@ import br.com.fiap.produtos.view.Opcao;
 import br.com.fiap.produtos.view.OpcaoView;
 import br.com.fiap.produtos.view.ProdutoView;
 
+import javax.swing.*;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -18,7 +21,7 @@ public class Main {
             opcao = OpcaoView.select();
             switch (opcao){
                 case CADASTRA_CATEGORIA -> cadastraCategoria();
-                case CADASTRAS_PRODUTO -> cadatraProdruto();
+                case CADASTRAS_PRODUTO -> cadastraProdruto();
                 case CONSULTAR_PRODUTO_POR_ID -> consultarProdutoPorId();
                 case CONSULTAR_PRODUTO_POR_CATEGORIA -> consultarProdutoPorCategoria();
                 case ALTERAR_PRODUTO -> alterarProduto();
@@ -30,7 +33,18 @@ public class Main {
     }
 
     private static void consultarProdutoPorCategoria() {
-        System.exit(0);
+
+        Categoria categoria = CategoriaView.select(null);
+
+        List<Produto> produtos = ProdutoCollectionRepository.findByCategoria(categoria);
+
+        if(produtos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Não encontramos produtos com a categoria: " + categoria.getNome());
+        }else{
+            produtos.forEach(ProdutoView::show);
+            produtos.forEach(System.out::println);
+        }
+
     }
 
     private static void consultarProdutoPorId() {
@@ -47,7 +61,7 @@ public class Main {
 
     }
 
-    private static void cadatraProdruto() {
+    private static void cadastraProdruto() {
 
         Produto produto = ProdutoView.form(new Produto());
         ProdutoCollectionRepository.save(produto);

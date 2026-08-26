@@ -79,7 +79,7 @@ public class ProdutoView {
         show(produto);
     }
 
-    private static void show(Produto p) {
+    public static void show(Produto p) {
         System.out.println(p);
 
         String textoFormatado = String.format("PRODUTO: " + p.getNome() + System.lineSeparator() + "DESCRIÇÃO: " + p.getDescricao() + System.lineSeparator() + "CATEGORIA: " + p.getCategoria() + System.lineSeparator() + "PREÇO: %, .2f", p.getPreco());
