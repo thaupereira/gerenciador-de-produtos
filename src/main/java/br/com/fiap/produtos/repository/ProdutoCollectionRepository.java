@@ -33,7 +33,7 @@ public class ProdutoCollectionRepository {
 
 
     public static Produto save(Produto produto) {
-        if(produtos.contains(produto)){
+        if(!produtos.contains(produto)){
             produto.setId((long)produtos.size()+1);
             produtos.add(produto);
 

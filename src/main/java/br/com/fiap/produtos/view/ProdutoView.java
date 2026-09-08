@@ -26,7 +26,7 @@ public class ProdutoView {
         String descricao = "";
 
         do{
-            descricao = JOptionPane.showInputDialog(null, "Informe a descrição do ´produto", produto.getDescricao());
+            descricao = JOptionPane.showInputDialog(null, "Informe a descrição do produto", produto.getDescricao());
         }while (descricao.equals(""));
 
         double preco = 0;
